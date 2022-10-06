@@ -46,7 +46,7 @@ class CounterMiddleware:
             if message["type"] == "http.response.start":
                 # this is the code that is call in the "response" phase of the middleware
                 hub = sentry_sdk.Hub.current
-                with hub.start_span(op="db.redis", description="in the response phase") as middleware_span:
+                with hub.start_span(op="cache.get_item", description="in the response phase") as middleware_span:
                     print('so something here with response data')
                     time.sleep(0.04)
 
