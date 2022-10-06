@@ -35,8 +35,6 @@ class CounterMiddleware:
             return
 
         # this code is called in the "request" phase of the middleware
-        path = scope.get("path")
-
         hub = sentry_sdk.Hub.current
         print(f"~~~ 1 current span: {hub.scope.span}")        
         with hub.start_span(op="cache.save", description="in the request phase of CounterMiddleware") as middleware_span:
@@ -56,7 +54,7 @@ class CounterMiddleware:
                     print(f"~~~~~ 2 hub: {hub}")
                     print(f"~~~~~ 2 scope: {hub.scope}")
                     print(f"~~~~~ 2 new current span: {hub.scope.span}")
-                    time.sleep(0.04)
+                    time.sleep(0.03)
 
             await send(message)
 
