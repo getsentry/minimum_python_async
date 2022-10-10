@@ -1,6 +1,7 @@
 fastapi
 uvicorn[standard]
 
-sentry-sdk
+#sentry-sdk
+-e ../sentry-python
 
 ipdb
