@@ -10,6 +10,10 @@ SENTRY_DSN="https://095875278cb642c0860527ed126333a9@o447951.ingest.sentry.io/66
 # https://sentry.io/organizations/sentry-sdks/performance/summary/?project=6618415&query=http.method%3AGET&statsPeriod=24h&transaction=%2F&unselectedSeries=p100%28%29
 #
 
+#
+# RESULT:
+# https://sentry.io/organizations/sentry-sdks/performance/fastapi:e12d5795aba4414ebe6adc2457a55a99/?project=6618415&query=&showTransactions=recent&statsPeriod=24h&transaction=task1&unselectedSeries=p100%28%29
+#
 
 async def foo():
     #with sentry_sdk.start_span(op="foo"):

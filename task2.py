@@ -10,16 +10,14 @@ SENTRY_DSN="https://095875278cb642c0860527ed126333a9@o447951.ingest.sentry.io/66
 # https://sentry.io/organizations/sentry-sdks/performance/summary/?project=6618415&query=http.method%3AGET&statsPeriod=24h&transaction=%2F&unselectedSeries=p100%28%29
 #
 
+#
+# RESULT:
+# https://sentry.io/organizations/sentry-sdks/performance/fastapi:4e94ba89b4734a428c2fe0c8a6aa8642/?project=6618415&query=&showTransactions=recent&statsPeriod=24h&transaction=task2&unselectedSeries=p100%28%29
+#
 
 async def _batch_task(task, pool, span, index):
-    print(f"Current hub: {Hub.current}")
-    print(f"Current scope: {Hub.current.scope}")
-    print(f"Current span: {Hub.current.scope.span}")
-    with start_span(op="make_something", description=f'task-{index}') as spanx:
-        print(f"Created span: {spanx}")
-        async with pool:
-            with span.start_child(op="batch", description=f'task-{index}'):
-                await task
+    async with pool:
+        await task
 
 
 async def batch(items, size=10):
